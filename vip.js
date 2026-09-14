@@ -12,3 +12,4 @@ if(location.pathname.endsWith('/pc.html')){const navPersonal=document.querySelec
 if(location.pathname.endsWith('/pc.html')){const pcPersonalFinal=document.querySelector('.game-nav a:nth-of-type(7)');if(pcPersonalFinal)pcPersonalFinal.href='./personal.html'}
 if(location.pathname.endsWith('/pc.html')){const pcVip=document.querySelector('.game-nav a:nth-of-type(7)');if(pcVip)pcVip.href='./vip-center.html'}
 const homeLink=document.createElement('a');homeLink.href='./index.html';homeLink.textContent='返回首页';homeLink.style.cssText='position:fixed;top:14px;left:18px;z-index:50;color:#fff;text-decoration:none;background:#252832;border:1px solid #555;border-radius:18px;padding:7px 14px;font-size:13px';document.body.appendChild(homeLink);
+document.querySelectorAll('a').forEach(a=>{if(a.textContent.trim()==='返回首页')a.remove()});const back=document.querySelector('.back-entry');if(back)back.style.cssText='position:fixed;top:14px;left:18px;right:auto;bottom:auto;z-index:50';

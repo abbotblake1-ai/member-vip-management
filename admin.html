@@ -120,18 +120,34 @@
               <div class="upload-field"><div class="upload-label">Web</div><div class="upload-box" data-limit="4"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过4MB</p></div>
             </div>
           </section>
-          <section class="material-card">
-            <div class="material-info"><h3>活动规则图：</h3></div>
-            <div class="upload-grid">
-              <div class="upload-field"><div class="upload-label">APP/H5</div><div class="upload-box" data-limit="4"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过4MB</p></div>
-              <div class="upload-field"><div class="upload-label">Web</div><div class="upload-box" data-limit="4"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过4MB</p></div>
-            </div>
+          <section class="rules-section">
+            <div class="rules-title"><strong>活动规则：</strong><button class="primary" id="insertRuleBtn">插入一行</button></div>
+            <table class="rules-table">
+              <thead><tr><th>序号</th><th>规则内容</th><th>APP/H5图片</th><th>Web图片</th><th>操作</th></tr></thead>
+              <tbody id="rulesRows"></tbody>
+            </table>
+            <div class="rules-empty" id="rulesEmpty">暂无数据</div>
           </section>
         </div>
       </div>
       <div id="placeholderPanel" class="placeholder" hidden><div>当前展示：<strong id="placeholderTitle"></strong></div><p>该页签已保留，后续可继续补充对应原型。</p></div>
     </section>
   </main>
+  <div class="modal-mask" id="ruleModal" hidden>
+    <section class="rule-dialog" role="dialog" aria-modal="true" aria-labelledby="ruleDialogTitle">
+      <header><h2 id="ruleDialogTitle">新增</h2><button type="button" id="ruleModalClose" aria-label="关闭">×</button></header>
+      <div class="rule-form">
+        <div class="form-row"><strong>请选择上传类型：</strong><label><input type="radio" name="ruleType" value="text" checked> 文本</label><label><input type="radio" name="ruleType" value="image"> 图片上传</label></div>
+        <div id="ruleTextFields"><label class="required-field"><strong>文本：</strong><input id="ruleTextInput" type="text" placeholder="请输入"></label></div>
+        <div id="ruleImageFields" hidden>
+          <label class="rule-image-row"><strong>APP/H5图片：</strong><span class="rule-upload-box"><input id="ruleH5Image" type="file" accept="image/jpeg,image/png"><b>＋</b></span></label>
+          <label class="rule-image-row"><strong>Web图片：</strong><span class="rule-upload-box"><input id="ruleWebImage" type="file" accept="image/jpeg,image/png"><b>＋</b></span></label>
+        </div>
+        <p class="rule-help">只支持一种方式，选择图片不支持文字，选择文字不支持图片</p>
+        <div class="dialog-actions"><button type="button" class="primary" id="ruleConfirmBtn">确认</button><button type="button" id="ruleCancelBtn">关闭</button></div>
+      </div>
+    </section>
+  </div>
   <div id="toast" class="toast" role="status"></div>
   <script src="./app.js"></script>
 </body>

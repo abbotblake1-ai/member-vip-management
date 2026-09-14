@@ -5,3 +5,5 @@ const screenshotRules=[['升级条件','VIP成长值（由存款与有效投注�
 document.querySelectorAll('.center-nav a').forEach(a=>{if(a.textContent.includes('个人中心'))a.href='./personal.html'});
 const ruleBox=document.querySelector('.detail-body ol');if(ruleBox){ruleBox.style.border='3px dashed #f5222d';ruleBox.style.padding='18px 22px';ruleBox.style.margin='0'}
 const detailBtn=document.querySelector('#viewDetails');if(detailBtn)detailBtn.style.border='2px dashed #f5222d';
+const activityEntry=document.querySelector('.center-nav .nav-title');if(activityEntry){activityEntry.style.cursor='pointer';activityEntry.onclick=()=>location.href='./pc.html'}
+document.querySelectorAll('.center-nav a').forEach(a=>{if(a.textContent.includes('个人中心')){a.removeAttribute('href');a.style.cursor='default'}});

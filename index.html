@@ -68,6 +68,7 @@
         <div class="switch-setting"><strong>返水开关</strong><button class="switch" id="rebateSwitch" role="switch" aria-checked="false"><span></span><em>关</em></button></div>
         <div class="rebate-table-wrap">
           <table class="rebate-table">
+            <colgroup><col class="vip-col"><col span="6" class="rate-col"></colgroup>
             <thead>
               <tr><th rowspan="2">VIP等级</th><th colspan="6">返水比例</th></tr>
               <tr><th>体育&nbsp;＋</th><th>真人&nbsp;＋</th><th>电子&nbsp;＋</th><th>电竞&nbsp;＋</th><th>棋牌&nbsp;＋</th><th>彩票&nbsp;＋</th></tr>
@@ -90,6 +91,12 @@
             <tbody id="recordRows"></tbody>
           </table>
           <div class="empty-records" id="emptyRecords" hidden>暂无符合条件的记录</div>
+          <div class="pagination" id="pagination">
+            <span>共 15066 条</span>
+            <select aria-label="每页条数"><option>10条/页</option><option>20条/页</option><option>50条/页</option><option>100条/页</option></select>
+            <button class="page-arrow" data-page="prev" disabled>‹</button><button class="page-number active" data-page="1">1</button><button class="page-number" data-page="2">2</button><button class="page-number" data-page="3">3</button><button class="page-number" data-page="4">4</button><button class="page-number" data-page="5">5</button><button class="page-number" data-page="6">6</button><span class="page-dots">•••</span><button class="page-number" data-page="1507">1507</button><button class="page-arrow" data-page="next">›</button>
+            <label class="page-jump">前往 <input id="pageInput" value="1" inputmode="numeric"> 页</label>
+          </div>
         </div>
       </div>
       <div id="placeholderPanel" class="placeholder" hidden><div>当前展示：<strong id="placeholderTitle"></strong></div><p>该页签已保留，后续可继续补充对应原型。</p></div>

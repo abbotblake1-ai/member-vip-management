@@ -7,6 +7,7 @@
   <meta name="description" content="会员VIP等级配置后台原型" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231c2f43'/%3E%3Cpath d='M7 10l4 12h10l4-12-6 5-3-7-3 7z' fill='%232fb7bd'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./records.css" />
 </head>
 <body>
   <aside class="sidebar" id="sidebar">
@@ -73,6 +74,22 @@
             </thead>
             <tbody id="rebateRows"></tbody>
           </table>
+        </div>
+      </div>
+      <div id="recordPanel" hidden>
+        <form class="record-filters" id="recordFilters">
+          <label>变更时间</label><div class="date-range"><input type="text" placeholder="开始时间"><span>–</span><input type="text" placeholder="结束时间"></div>
+          <label>变更类型</label><select id="changeType"><option value="">请选择</option><option>升级</option><option>降级</option></select>
+          <label>会员账号</label><input id="memberAccount" type="text" placeholder="请输入">
+          <label>操作人</label><input id="operator" type="text" placeholder="请输入">
+          <div class="filter-actions"><button type="submit" class="query-btn">⌕&nbsp; 查询</button><button type="reset" class="reset-btn">↻&nbsp; 重置</button><button type="button" class="export-btn" id="exportBtn">⇩&nbsp; 导出</button></div>
+        </form>
+        <div class="records-wrap">
+          <table class="records-table">
+            <thead><tr><th>变更时间</th><th>变更类型</th><th>变更前</th><th>变更后</th><th>会员账号</th><th>会员标签</th><th>上级代理</th><th>账号状态</th><th>调整方式</th><th>备注</th><th>操作人</th></tr></thead>
+            <tbody id="recordRows"></tbody>
+          </table>
+          <div class="empty-records" id="emptyRecords" hidden>暂无符合条件的记录</div>
         </div>
       </div>
       <div id="placeholderPanel" class="placeholder" hidden><div>当前展示：<strong id="placeholderTitle"></strong></div><p>该页签已保留，后续可继续补充对应原型。</p></div>

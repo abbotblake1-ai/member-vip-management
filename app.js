@@ -6,9 +6,19 @@ const seed=[
 const tbody=document.querySelector('#vipRows');
 function render(data){tbody.innerHTML=data.map((row,i)=>`<tr>${row.map((v,j)=>j===0?`<td>${v}</td>`:`<td><input aria-label="VIP${i} ${j}" value="${v}" placeholder="请输入"></td>`).join('')}</tr>`).join('')}
 render(seed);
+const rebateSeed=[
+ ['VIP0','','','','','',''],['VIP1','1','','1','1','1','1'],['VIP2','0.5','2','2','2','2','2'],['VIP3','0.5','0.5','0.5','0.5','0.5','0'],
+ ['VIP4','4','4','4','4','4','4'],['VIP5','5','5','5','5','5','5'],['VIP6','6','6','6','6','6','6'],['VIP7','7','7','7','7','7','7'],
+ ['VIP8','8','8','8','8','8','8'],['VIP9','9','9','9','9','9','9'],['VIP10','10','10','10','10','10','10'],['VIP11','11','11','11','11','11','11']
+];
+const rebateBody=document.querySelector('#rebateRows');
+function renderRebates(data){rebateBody.innerHTML=data.map((row,i)=>`<tr><td>${row[0]}</td>${row.slice(1).map((v,j)=>`<td><div class="percent-input"><input aria-label="${row[0]} 返水比例 ${j+1}" value="${v}" placeholder="请输入百分比" inputmode="decimal"><span>%</span></div></td>`).join('')}</tr>`).join('')}
+renderRebates(rebateSeed);
 const toast=document.querySelector('#toast');function notify(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}
 document.querySelector('#saveBtn').onclick=()=>{const values=[...tbody.rows].map((tr,i)=>[i,...tr.querySelectorAll('input')].map((x,j)=>j?x.value:x));localStorage.setItem('vip-config',JSON.stringify(values));notify('保存成功')};
 document.querySelector('#restoreBtn').onclick=()=>{const saved=localStorage.getItem('vip-config');render(saved?JSON.parse(saved):seed);notify(saved?'已恢复上次保存的设置':'已恢复默认设置')};
-document.querySelectorAll('.tab').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const main=btn.dataset.tab==='等级配置';document.querySelector('#configPanel').hidden=!main;document.querySelector('#placeholderPanel').hidden=main;document.querySelector('#placeholderTitle').textContent=btn.textContent});
+document.querySelectorAll('.tab').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const type=btn.dataset.tab;document.querySelector('#configPanel').hidden=type!=='等级配置';document.querySelector('#rebatePanel').hidden=type!=='返水配置';const placeholder=type!=='等级配置'&&type!=='返水配置';document.querySelector('#placeholderPanel').hidden=!placeholder;document.querySelector('#placeholderTitle').textContent=btn.textContent});
+document.querySelector('#rebateSwitch').onclick=()=>{const el=document.querySelector('#rebateSwitch');const on=el.getAttribute('aria-checked')!=='true';el.setAttribute('aria-checked',String(on));el.classList.toggle('on',on);el.querySelector('em').textContent=on?'开':'关'};
+document.querySelector('#rebateSaveBtn').onclick=()=>{const state={multiple:document.querySelector('#turnoverMultiple').value,enabled:document.querySelector('#rebateSwitch').getAttribute('aria-checked')==='true',rates:[...rebateBody.rows].map(tr=>[...tr.querySelectorAll('input')].map(x=>x.value))};localStorage.setItem('vip-rebate-config',JSON.stringify(state));notify('返水配置保存成功')};
 document.querySelector('#memberToggle').onclick=()=>{const m=document.querySelector('#memberMenu');m.hidden=!m.hidden};
 document.querySelector('#collapseBtn').onclick=()=>{document.querySelector('#sidebar').classList.toggle('collapsed');document.querySelector('.workspace').classList.toggle('expanded')};

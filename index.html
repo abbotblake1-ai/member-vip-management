@@ -61,6 +61,20 @@
         </div>
         <div class="actions"><button class="primary" id="saveBtn">保存</button><button id="restoreBtn">恢复上次设置</button></div>
       </div>
+      <div id="rebatePanel" hidden>
+        <div class="rebate-heading"><h2>基础配置</h2><button class="primary rebate-save" id="rebateSaveBtn">保存</button></div>
+        <div class="base-setting"><label for="turnoverMultiple">提款流水倍数</label><div class="unit-input"><input id="turnoverMultiple" value="1" inputmode="decimal"><span>倍</span></div></div>
+        <div class="switch-setting"><strong>返水开关</strong><button class="switch" id="rebateSwitch" role="switch" aria-checked="false"><span></span><em>关</em></button></div>
+        <div class="rebate-table-wrap">
+          <table class="rebate-table">
+            <thead>
+              <tr><th rowspan="2">VIP等级</th><th colspan="6">返水比例</th></tr>
+              <tr><th>体育&nbsp;＋</th><th>真人&nbsp;＋</th><th>电子&nbsp;＋</th><th>电竞&nbsp;＋</th><th>棋牌&nbsp;＋</th><th>彩票&nbsp;＋</th></tr>
+            </thead>
+            <tbody id="rebateRows"></tbody>
+          </table>
+        </div>
+      </div>
       <div id="placeholderPanel" class="placeholder" hidden><div>当前展示：<strong id="placeholderTitle"></strong></div><p>该页签已保留，后续可继续补充对应原型。</p></div>
     </section>
   </main>

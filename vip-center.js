@@ -7,3 +7,4 @@ const ruleBox=document.querySelector('.detail-body ol');if(ruleBox){ruleBox.styl
 const detailBtn=document.querySelector('#viewDetails');if(detailBtn)detailBtn.style.border='2px dashed #f5222d';
 const activityEntry=document.querySelector('.center-nav .nav-title');if(activityEntry){activityEntry.style.cursor='pointer';activityEntry.onclick=()=>location.href='./pc.html'}
 document.querySelectorAll('.center-nav a').forEach(a=>{if(a.textContent.includes('个人中心')){a.removeAttribute('href');a.style.cursor='default'}});
+const homeLink=document.createElement('a');homeLink.href='./index.html';homeLink.textContent='返回首页';homeLink.style.cssText='position:fixed;top:14px;left:18px;z-index:50;color:#fff;text-decoration:none;background:#252832;border:1px solid #555;border-radius:18px;padding:7px 14px;font-size:13px';document.body.appendChild(homeLink);

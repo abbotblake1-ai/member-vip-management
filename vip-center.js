@@ -1,0 +1,1 @@
+const mask=document.querySelector('#detailMask');document.querySelector('#viewDetails').onclick=()=>mask.hidden=false;document.querySelector('#closeDetails').onclick=()=>mask.hidden=true;mask.onclick=e=>{if(e.target===mask)mask.hidden=true};

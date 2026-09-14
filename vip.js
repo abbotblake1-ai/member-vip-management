@@ -10,3 +10,4 @@ const style=document.createElement('style');style.textContent='.rules ol{list-st
 if(location.pathname.endsWith('/pc.html')){const pcPersonal=document.querySelector('.game-nav a:nth-of-type(7)');if(pcPersonal)pcPersonal.href='./vip-center.html'}
 if(location.pathname.endsWith('/pc.html')){const navPersonal=document.querySelector('.game-nav a:nth-of-type(7)');if(navPersonal)navPersonal.href='./h5-personal.html';const activity=document.querySelector('.game-nav .nav-title');if(activity)activity.style.cursor='pointer',activity.onclick=()=>location.href='./pc.html'}
 if(location.pathname.endsWith('/pc.html')){const pcPersonalFinal=document.querySelector('.game-nav a:nth-of-type(7)');if(pcPersonalFinal)pcPersonalFinal.href='./personal.html'}
+if(location.pathname.endsWith('/pc.html')){const pcVip=document.querySelector('.game-nav a:nth-of-type(7)');if(pcVip)pcVip.href='./vip-center.html'}

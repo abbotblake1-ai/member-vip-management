@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>会员VIP管理</title>
+  <meta name="description" content="会员VIP等级配置后台原型" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231c2f43'/%3E%3Cpath d='M7 10l4 12h10l4-12-6 5-3-7-3 7z' fill='%232fb7bd'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./records.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="brand-mark">♛</span><strong>VSport-Admin</strong></div>
+    <nav class="main-nav" aria-label="后台管理菜单">
+      <button class="nav-item"><span>⌂</span><b>首页</b></button>
+      <button class="nav-item"><span>▣</span><b>秘钥管理</b></button>
+      <button class="nav-item"><span>✥</span><b>工具管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>✥</span><b>平台管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>✥</span><b>游戏管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>▥</span><b>数据总览</b><i>⌄</i></button>
+      <button class="nav-item expanded" id="memberToggle"><span>♟</span><b>会员管理</b><em>9999+</em><i>⌃</i></button>
+      <div class="submenu" id="memberMenu">
+        <button><span>☷</span>会员列表</button>
+        <button><span>♧</span>在线会员</button>
+        <button><span>♟</span>新增虚拟会员</button>
+        <button><span>▣</span>会员信息变更记录</button>
+        <button><span>⚑</span>会员账变记录<em>9999+</em></button>
+        <button><span>▧</span>流水详情(流水记录)</button>
+        <button><span>↪</span>会员账变记录</button>
+        <button><span>▧</span>会员转账记录</button>
+        <button><span>▯</span>手机管理</button>
+        <button class="active"><span>♟</span>会员VIP管理</button>
+      </div>
+      <button class="nav-item"><span>♟</span><b>邀请管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>▥</span><b>银行卡/虚拟币管理</b></button>
+      <button class="nav-item"><span>♟</span><b>专属客服</b></button>
+      <button class="nav-item"><span>▯</span><b>电话回拨</b></button>
+    </nav>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <button id="collapseBtn" class="icon-btn" aria-label="收起侧边栏">☰</button>
+      <div class="breadcrumb"><strong>首页</strong><span>/</span><span>会员管理</span><span>/</span><span>会员VIP管理</span></div>
+      <div class="toolbar"><a class="front-link" href="./index.html">原型入口</a><button class="download">下载列表 <b>34</b></button><button>⌕</button><button>⛶</button><button>TT</button><span class="flag">●</span><span class="avatar">管</span></div>
+    </header>
+    <div class="page-tag"><span>首页</span><strong>● 会员VIP管理 ×</strong></div>
+    <section class="content">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="等级配置">VIP等级配置</button>
+        <button class="tab" data-tab="权益配置">VIP权益配置</button>
+        <button class="tab" data-tab="返水配置">VIP返水配置</button>
+        <button class="tab" data-tab="等级变更记录">VIP等级变更记录</button>
+      </div>
+      <div id="configPanel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>VIP等级</th><th>VIP等级名称</th><th>升级条件存款≥</th><th>升级条件累计有效流水≥</th><th>保级流水≥</th><th>保级有效期（天）</th><th>单日提款限制（次）</th><th>单日提款限额（次）</th><th>周礼金领取存款条件</th><th>周礼金领取流水条件</th><th>月礼金领取存款条件</th><th>月礼金领取流水条件</th></tr></thead>
+            <tbody id="vipRows"></tbody>
+          </table>
+        </div>
+        <div class="actions"><button class="primary" id="saveBtn">保存</button><button id="restoreBtn">恢复上次设置</button></div>
+      </div>
+      <div id="rebatePanel" hidden>
+        <div class="rebate-heading"><h2>基础配置</h2><button class="primary rebate-save" id="rebateSaveBtn">保存</button></div>
+        <div class="base-setting"><label for="turnoverMultiple">提款流水倍数</label><div class="unit-input"><input id="turnoverMultiple" value="1" inputmode="decimal"><span>倍</span></div></div>
+        <div class="switch-setting"><strong>返水开关</strong><button class="switch" id="rebateSwitch" role="switch" aria-checked="false"><span></span><em>关</em></button></div>
+        <div class="rebate-table-wrap">
+          <table class="rebate-table">
+            <colgroup><col class="vip-col"><col span="6" class="rate-col"></colgroup>
+            <thead>
+              <tr><th rowspan="2">VIP等级</th><th colspan="6">返水比例</th></tr>
+              <tr><th>体育&nbsp;＋</th><th>真人&nbsp;＋</th><th>电子&nbsp;＋</th><th>电竞&nbsp;＋</th><th>棋牌&nbsp;＋</th><th>彩票&nbsp;＋</th></tr>
+            </thead>
+            <tbody id="rebateRows"></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="recordPanel" hidden>
+        <form class="record-filters" id="recordFilters">
+          <label>变更时间</label><div class="date-range"><input type="text" placeholder="开始时间"><span>–</span><input type="text" placeholder="结束时间"></div>
+          <label>变更类型</label><select id="changeType"><option value="">请选择</option><option>升级</option><option>降级</option></select>
+          <label>会员账号</label><input id="memberAccount" type="text" placeholder="请输入">
+          <label>操作人</label><input id="operator" type="text" placeholder="请输入">
+          <div class="filter-actions"><button type="submit" class="query-btn">⌕&nbsp; 查询</button><button type="reset" class="reset-btn">↻&nbsp; 重置</button><button type="button" class="export-btn" id="exportBtn">⇩&nbsp; 导出</button></div>
+        </form>
+        <div class="records-wrap">
+          <table class="records-table">
+            <thead><tr><th>变更时间</th><th>变更类型</th><th>变更前</th><th>变更后</th><th>会员账号</th><th>会员标签</th><th>上级代理</th><th>账号状态</th><th>调整方式</th><th>备注</th><th>操作人</th></tr></thead>
+            <tbody id="recordRows"></tbody>
+          </table>
+          <div class="empty-records" id="emptyRecords" hidden>暂无符合条件的记录</div>
+          <div class="pagination" id="pagination">
+            <span>共 15066 条</span>
+            <select aria-label="每页条数"><option>10条/页</option><option>20条/页</option><option>50条/页</option><option>100条/页</option></select>
+            <button class="page-arrow" data-page="prev" disabled>‹</button><button class="page-number active" data-page="1">1</button><button class="page-number" data-page="2">2</button><button class="page-number" data-page="3">3</button><button class="page-number" data-page="4">4</button><button class="page-number" data-page="5">5</button><button class="page-number" data-page="6">6</button><span class="page-dots">•••</span><button class="page-number" data-page="1507">1507</button><button class="page-arrow" data-page="next">›</button>
+            <label class="page-jump">前往 <input id="pageInput" value="1" inputmode="numeric"> 页</label>
+          </div>
+        </div>
+      </div>
+      <div id="placeholderPanel" class="placeholder" hidden><div>当前展示：<strong id="placeholderTitle"></strong></div><p>该页签已保留，后续可继续补充对应原型。</p></div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>

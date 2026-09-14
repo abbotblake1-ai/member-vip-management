@@ -52,6 +52,7 @@
         <button class="tab" data-tab="权益配置">VIP权益配置</button>
         <button class="tab" data-tab="返水配置">VIP返水配置</button>
         <button class="tab" data-tab="等级变更记录">VIP等级变更记录</button>
+        <button class="tab" data-tab="页面配置">VIP页面配置</button>
       </div>
       <div id="configPanel">
         <div class="table-wrap">
@@ -97,6 +98,35 @@
             <button class="page-arrow" data-page="prev" disabled>‹</button><button class="page-number active" data-page="1">1</button><button class="page-number" data-page="2">2</button><button class="page-number" data-page="3">3</button><button class="page-number" data-page="4">4</button><button class="page-number" data-page="5">5</button><button class="page-number" data-page="6">6</button><span class="page-dots">•••</span><button class="page-number" data-page="1507">1507</button><button class="page-arrow" data-page="next">›</button>
             <label class="page-jump">前往 <input id="pageInput" value="1" inputmode="numeric"> 页</label>
           </div>
+        </div>
+      </div>
+      <div id="pageConfigPanel" hidden>
+        <div class="page-config-head">
+          <div><h2>VIP活动内页图片配置</h2><p>分别上传 PC、H5 对应图片，前端按访问终端展示。</p></div>
+          <button class="primary" id="pageConfigSaveBtn">保存</button>
+        </div>
+        <div class="material-list">
+          <section class="material-card">
+            <div class="material-info"><h3><span>1</span>活动内页顶部图</h3><p>展示在 VIP 活动页面顶部，用于活动主视觉。</p></div>
+            <div class="upload-grid">
+              <div class="upload-field"><div class="upload-label"><strong>PC</strong><span>推荐 1920 × 560 px</span></div><div class="upload-box"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b><span>上传图片</span><small>JPG、PNG，≤ 4M</small></div></div></div>
+              <div class="upload-field"><div class="upload-label"><strong>H5</strong><span>推荐 750 × 560 px</span></div><div class="upload-box"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b><span>上传图片</span><small>JPG、PNG，≤ 4M</small></div></div></div>
+            </div>
+          </section>
+          <section class="material-card">
+            <div class="material-info"><h3><span>2</span>活动背景图</h3><p>作为活动内容区域背景，宽度固定，高度随内容自适应展示。</p></div>
+            <div class="upload-grid">
+              <div class="upload-field"><div class="upload-label"><strong>PC</strong><span>推荐 1920 × 1600 px</span></div><div class="upload-box"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b><span>上传图片</span><small>JPG、PNG，≤ 4M</small></div></div></div>
+              <div class="upload-field"><div class="upload-label"><strong>H5</strong><span>推荐 750 × 1600 px</span></div><div class="upload-box"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b><span>上传图片</span><small>JPG、PNG，≤ 4M</small></div></div></div>
+            </div>
+          </section>
+          <section class="material-card">
+            <div class="material-info"><h3><span>3</span>活动规则图</h3><p>展示在页面底部规则区域，图片内容由运营制作。</p></div>
+            <div class="upload-grid">
+              <div class="upload-field"><div class="upload-label"><strong>PC</strong><span>推荐宽度 1200 px，高度不限</span></div><div class="upload-box"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b><span>上传图片</span><small>JPG、PNG，≤ 4M</small></div></div></div>
+              <div class="upload-field"><div class="upload-label"><strong>H5</strong><span>推荐宽度 690 px，高度不限</span></div><div class="upload-box"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b><span>上传图片</span><small>JPG、PNG，≤ 4M</small></div></div></div>
+            </div>
+          </section>
         </div>
       </div>
       <div id="placeholderPanel" class="placeholder" hidden><div>当前展示：<strong id="placeholderTitle"></strong></div><p>该页签已保留，后续可继续补充对应原型。</p></div>

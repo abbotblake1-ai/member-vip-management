@@ -1,4 +1,4 @@
-document.querySelectorAll('.game-nav a').forEach(a=>{if(a.textContent.includes('个人中心'))a.href='./personal.html'});const mobileMine=document.querySelector('.mobile-bottom a:last-child');if(mobileMine)mobileMine.href='./personal.html';
+const mobileMine=document.querySelector('.mobile-bottom a:last-child');if(mobileMine)mobileMine.href='./personal.html';
 const levels=[
  {name:'VIP1会员',deposit:'≥ 1元',bet:'金额不限',keep:'金额不限',rewards:['暂无奖励','暂无奖励','暂无奖励']},
  {name:'VIP2会员',deposit:'500元',bet:'10,000元',keep:'4,000元',rewards:['暂无奖励','28元彩金','18元彩金'],alt:true},

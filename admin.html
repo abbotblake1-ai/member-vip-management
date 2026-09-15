@@ -129,10 +129,9 @@
             <div class="rules-empty" id="rulesEmpty">暂无数据</div>
           </section>
           <section class="rules-section vip-terms-section">
-            <div class="rules-title"><strong><i class="required-star">*</i>VIP条款与规则：</strong></div>
+            <div class="rules-title"><strong class="vip-terms-label"><i class="required-star">*</i>VIP条款与规则：</strong></div>
             <div class="rich-toolbar"><button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-cmd="strikeThrough">S̶</button><button type="button" data-cmd="formatBlock" data-value="h1">H1</button><button type="button" data-cmd="formatBlock" data-value="h2">H2</button><button type="button" data-cmd="insertOrderedList">1. 列表</button><button type="button" data-cmd="insertUnorderedList">• 列表</button><button type="button" data-cmd="justifyLeft">左对齐</button><button type="button" data-cmd="justifyCenter">居中</button><button type="button" data-cmd="justifyRight">右对齐</button><span class="font-size-label">14px</span><span class="font-label">标准字体</span></div>
             <div id="vipTermsEditor" class="rich-editor" contenteditable="true" data-placeholder="请输入完整的VIP条款与规则文案"></div>
-            <div class="vip-terms-actions"><button type="button" id="vipTermsCancelBtn">取消</button><button type="button" class="primary" id="vipTermsConfirmBtn">确定</button></div>
           </section>
         </div>
       </div>
@@ -156,5 +155,5 @@
   </div>
   <div id="toast" class="toast" role="status"></div>
   <style>.vip-terms-section{margin-top:24px}.rich-toolbar{display:flex;gap:8px;padding:10px 12px;background:#f5f7fa;border:1px solid #dfe5ec;border-bottom:0}.rich-toolbar button{border:1px solid #cfd8e3;background:#fff;padding:5px 12px;cursor:pointer}.rich-editor{min-height:260px;padding:14px;border:1px solid #dfe5ec;background:#fff;line-height:1.8;color:#333;outline:none}.rich-editor:empty:before{content:attr(data-placeholder);color:#aab3bf}.vip-terms-section .dialog-actions{justify-content:flex-start;margin-top:12px}</style><script src="./app.js"></script>
-<script src="./vip-terms.js"></script></body>
+<style>.vip-terms-label{white-space:nowrap}</style><script src="./vip-terms.js"></script></body>
 </html>

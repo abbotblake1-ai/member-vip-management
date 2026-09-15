@@ -113,6 +113,12 @@
               <div class="upload-field"><div class="upload-label">Web</div><div class="upload-box" data-limit="2"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不大于2MB</p></div>
             </div>
           </section>
+          <section class="rules-section vip-terms-section">
+            <div class="rules-title"><strong><i class="required-star">*</i>VIP条款与规则：</strong><button class="primary" id="vipTermsPreviewBtn" type="button">预览</button></div>
+            <div class="rich-toolbar"><button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="insertUnorderedList">• 列表</button><button type="button" data-cmd="insertOrderedList">1. 列表</button></div>
+            <div id="vipTermsEditor" class="rich-editor" contenteditable="true" data-placeholder="请输入完整的VIP条款与规则文案"></div>
+            <div class="dialog-actions"><button type="button" class="primary" id="vipTermsSaveBtn">保存</button></div>
+          </section>
           <section class="material-card">
             <div class="material-info"><h3><i class="required-star">*</i>活动背景图：</h3></div>
             <div class="upload-grid">
@@ -149,6 +155,6 @@
     </section>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script src="./app.js"></script>
-</body>
+  <style>.vip-terms-section{margin-top:24px}.rich-toolbar{display:flex;gap:8px;padding:10px 12px;background:#f5f7fa;border:1px solid #dfe5ec;border-bottom:0}.rich-toolbar button{border:1px solid #cfd8e3;background:#fff;padding:5px 12px;cursor:pointer}.rich-editor{min-height:260px;padding:14px;border:1px solid #dfe5ec;background:#fff;line-height:1.8;color:#333;outline:none}.rich-editor:empty:before{content:attr(data-placeholder);color:#aab3bf}.vip-terms-section .dialog-actions{justify-content:flex-start;margin-top:12px}</style><script src="./app.js"></script>
+<script src="./vip-terms.js"></script></body>
 </html>

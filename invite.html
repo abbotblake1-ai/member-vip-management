@@ -19,10 +19,15 @@
       <button class="nav-item"><span>✥</span><b>平台管理</b><i>⌄</i></button>
       <button class="nav-item"><span>✥</span><b>游戏管理</b><i>⌄</i></button>
       <button class="nav-item"><span>▥</span><b>数据总览</b><i>⌄</i></button>
-      <button class="nav-item"><span>♟</span><b>会员管理</b><em>9999+</em><i>⌄</i></button>
-      <div class="submenu"><button class="active"><span>♟</span>邀请管理</button><button class="active"><span>♣</span>好友推荐</button><button><span>☷</span>邀请列表</button><button><span>¥</span>奖励列表</button></div>
+      <button class="nav-item expanded" id="inviteMemberToggle"><span>♟</span><b>会员管理</b><em>9999+</em><i>⌃</i></button>
+      <div class="submenu" id="inviteMemberMenu">
+        <button><span>☷</span>会员列表</button><button><span>♧</span>在线会员</button><button><span>♟</span>新增虚拟会员</button><button><span>▣</span>会员信息变更记录</button><button><span>⚑</span>会员账变记录<em>9999+</em></button><button><span>▧</span>流水详情(流水记录)</button><button><span>↪</span>会员账变记录</button><button><span>▧</span>会员转账记录</button><button><span>▯</span>手机管理</button><button><span>♟</span>会员VIP管理</button>
+      </div>
+      <button class="nav-item expanded" id="inviteNavToggle"><span>♟</span><b>邀请管理</b><i>⌃</i></button>
+      <div class="submenu" id="inviteNavMenu"><button class="active"><span>♣</span>好友推荐</button><button><span>☷</span>邀请列表</button><button><span>¥</span>奖励列表</button></div>
       <button class="nav-item"><span>▥</span><b>银行卡/虚拟币管理</b></button>
       <button class="nav-item"><span>♟</span><b>专属客服</b></button>
+      <button class="nav-item"><span>▯</span><b>电话回拨</b></button>
     </nav>
   </aside>
   <main class="workspace">
@@ -45,6 +50,8 @@
   <script>
     const toast=document.querySelector('#toast');const notify=m=>{toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)};
     document.querySelector('#collapseBtn').onclick=()=>{document.querySelector('#sidebar').classList.toggle('collapsed');document.querySelector('.workspace').classList.toggle('expanded')};
+    document.querySelector('#inviteMemberToggle').onclick=()=>document.querySelector('#inviteMemberMenu').hidden=!document.querySelector('#inviteMemberMenu').hidden;
+    document.querySelector('#inviteNavToggle').onclick=()=>document.querySelector('#inviteNavMenu').hidden=!document.querySelector('#inviteNavMenu').hidden;
     document.querySelector('#inviteForm').onsubmit=e=>{e.preventDefault();localStorage.setItem('invite-config',JSON.stringify([...e.target.querySelectorAll('input')].map(x=>x.value)));notify('保存成功')};
     document.querySelector('#restoreInvite').onclick=()=>notify(localStorage.getItem('invite-config')?'已恢复上次设置':'已恢复默认设置');
   </script>

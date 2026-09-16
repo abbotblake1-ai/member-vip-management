@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>好友推荐 - VSport Admin</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .invite-page{padding:0 26px 34px}.invite-tabs{height:58px;display:flex;align-items:flex-end;gap:48px;border-bottom:1px solid #dfe4e8}.invite-tab{height:44px;border:0;background:none;padding:0 0 13px;color:#303b45;font-size:15px;cursor:pointer}.invite-tab.active{color:#39a9f4;border-bottom:2px solid #39a9f4}.invite-form{max-width:900px;margin:220px auto 0;display:grid;grid-template-columns:140px 1fr 140px 1fr;align-items:center;column-gap:0;row-gap:24px}.invite-form label{color:#303a44;font-weight:600;text-align:right;padding-right:14px}.invite-form label.required:before{content:'*';color:#f05e64;margin-right:5px}.invite-form input{height:40px}.invite-form .unit{display:flex}.invite-form .unit input{border-radius:2px 0 0 2px}.invite-form .unit span{display:grid;place-items:center;width:58px;border:1px solid #dbe1e7;border-left:0;background:#f6f8fa;color:#87939f}.invite-form .range{display:flex;align-items:center;gap:10px}.invite-form .range input{width:calc(50% - 14px)}.invite-form .wide{grid-column:2 / 4}.invite-actions{grid-column:2 / 4;display:flex;gap:14px;margin-top:20px}.invite-actions button{height:38px;padding:0 24px;border:1px solid #d8dfe5;border-radius:3px;background:#fff;color:#65717b;cursor:pointer}.invite-actions .primary{background:#39a9f4;border-color:#39a9f4;color:#fff}.invite-page .placeholder-tab{margin-top:90px;padding:70px;text-align:center;color:#94a0aa;border:1px dashed #d7dfe6;background:#fafbfc}
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="brand-mark">♛</span><strong>VSport-Admin</strong></div>
+    <nav class="main-nav" aria-label="后台管理菜单">
+      <button class="nav-item"><span>⌂</span><b>首页</b></button>
+      <button class="nav-item"><span>▣</span><b>秘钥管理</b></button>
+      <button class="nav-item"><span>✥</span><b>工具管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>✥</span><b>平台管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>✥</span><b>游戏管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>▥</span><b>数据总览</b><i>⌄</i></button>
+      <button class="nav-item"><span>♟</span><b>会员管理</b><em>9999+</em><i>⌄</i></button>
+      <div class="submenu"><button class="active"><span>♟</span>邀请管理</button><button class="active"><span>♣</span>好友推荐</button><button><span>☷</span>邀请列表</button><button><span>¥</span>奖励列表</button></div>
+      <button class="nav-item"><span>▥</span><b>银行卡/虚拟币管理</b></button>
+      <button class="nav-item"><span>♟</span><b>专属客服</b></button>
+    </nav>
+  </aside>
+  <main class="workspace">
+    <header class="topbar"><button class="icon-btn" id="collapseBtn">☰</button><div class="breadcrumb"><strong>首页</strong><span>/</span><span>邀请管理</span><span>/</span><span>好友推荐</span></div><div class="toolbar"><a class="front-link" href="./index.html">原型入口</a><button>⌕</button><button>⛶</button><span class="avatar">管</span></div></header>
+    <div class="page-tag"><span>首页</span><strong>● 好友推荐 ×</strong></div>
+    <section class="content invite-page">
+      <div class="invite-tabs"><button class="invite-tab active">好友推荐</button><button class="invite-tab">流水分成</button><button class="invite-tab">好友VIP奖励</button><button class="invite-tab">邀请链接</button></div>
+      <form class="invite-form" id="inviteForm">
+        <label class="required">活动进行时间</label><div><label style="display:inline-flex;align-items:center;text-align:left;padding:0;font-weight:400"><input type="radio" name="status" checked style="width:auto;height:auto;margin-right:8px">开放</label><label style="display:inline-flex;align-items:center;text-align:left;padding:0 0 0 28px;font-weight:400"><input type="radio" name="status" style="width:auto;height:auto;margin-right:8px">暂不开放</label></div><span></span><span></span>
+        <label class="required">邀请人首存奖励</label><div class="unit"><input value="99"><span>%</span></div><label class="required">流水倍数</label><input value="9999">
+        <label class="required">受邀人首存奖励</label><div class="unit"><input value="10"><span>%</span></div><label class="required">流水倍数</label><input value="1">
+        <label class="required">有效首存金额</label><div class="range"><input value="1"><span>-</span><input value="1,000"></div><span></span><span></span>
+        <label class="required">邀请域名</label><input class="wide" value="https://m9share.uatspctn.com">
+        <label>指定一级代理</label><input class="wide" value="">
+        <div class="invite-actions"><button class="primary" type="submit">保存</button><button type="button" id="restoreInvite">恢复上次设置</button></div>
+      </form>
+    </section>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script>
+    const toast=document.querySelector('#toast');const notify=m=>{toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)};
+    document.querySelector('#collapseBtn').onclick=()=>{document.querySelector('#sidebar').classList.toggle('collapsed');document.querySelector('.workspace').classList.toggle('expanded')};
+    document.querySelector('#inviteForm').onsubmit=e=>{e.preventDefault();localStorage.setItem('invite-config',JSON.stringify([...e.target.querySelectorAll('input')].map(x=>x.value)));notify('保存成功')};
+    document.querySelector('#restoreInvite').onclick=()=>notify(localStorage.getItem('invite-config')?'已恢复上次设置':'已恢复默认设置');
+  </script>
+</body>
+</html>

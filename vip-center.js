@@ -9,3 +9,4 @@ const activityEntry=document.querySelector('.center-nav .nav-title');if(activity
 document.querySelectorAll('.center-nav a').forEach(a=>{if(a.textContent.includes('个人中心')){a.removeAttribute('href');a.style.cursor='default'}});
 const homeLink=document.createElement('a');homeLink.href='./index.html';homeLink.textContent='返回首页';homeLink.style.cssText='position:fixed;top:14px;left:18px;z-index:50;color:#fff;text-decoration:none;background:#252832;border:1px solid #555;border-radius:18px;padding:7px 14px;font-size:13px';document.body.appendChild(homeLink);
 document.querySelectorAll('a').forEach(a=>{if(a.textContent.trim()==='返回首页')a.remove()});const back=document.querySelector('.back-entry');if(back)back.style.cssText='position:fixed;top:14px;left:18px;right:auto;bottom:auto;z-index:50';
+document.querySelectorAll('.nav-pair b,.quick-links a').forEach(el=>{if(el.textContent.includes('邀好友')){el.style.cursor='pointer';el.onclick=()=>location.href='./invite-friends.html'}});

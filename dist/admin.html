@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>会员VIP管理</title>
+  <meta name="description" content="会员VIP等级配置后台原型" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231c2f43'/%3E%3Cpath d='M7 10l4 12h10l4-12-6 5-3-7-3 7z' fill='%232fb7bd'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./records.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="brand-mark">♛</span><strong>VSport-Admin</strong></div>
+    <nav class="main-nav" aria-label="后台管理菜单">
+      <button class="nav-item"><span>⌂</span><b>首页</b></button>
+      <button class="nav-item"><span>▣</span><b>秘钥管理</b></button>
+      <button class="nav-item"><span>✥</span><b>工具管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>✥</span><b>平台管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>✥</span><b>游戏管理</b><i>⌄</i></button>
+      <button class="nav-item"><span>▥</span><b>数据总览</b><i>⌄</i></button>
+      <button class="nav-item expanded" id="memberToggle"><span>♟</span><b>会员管理</b><em>9999+</em><i>⌃</i></button>
+      <div class="submenu" id="memberMenu">
+        <button><span>☷</span>会员列表</button>
+        <button><span>♧</span>在线会员</button>
+        <button><span>♟</span>新增虚拟会员</button>
+        <button><span>▣</span>会员信息变更记录</button>
+        <button><span>⚑</span>会员账变记录<em>9999+</em></button>
+        <button><span>▧</span>流水详情(流水记录)</button>
+        <button><span>↪</span>会员账变记录</button>
+        <button><span>▧</span>会员转账记录</button>
+        <button><span>▯</span>手机管理</button>
+        <button class="active"><span>♟</span>会员VIP管理</button>
+      </div>
+      <button class="nav-item expanded" id="inviteToggle"><span>♟</span><b>邀请管理</b><i>⌃</i></button>
+      <div class="submenu" id="inviteMenu">
+        <button class="active" onclick="location.href='./invite.html'"><span>♣</span>好友推荐</button>
+        <button><span>☷</span>邀请列表</button>
+        <button><span>¥</span>奖励列表</button>
+      </div>
+      <button class="nav-item"><span>▥</span><b>银行卡/虚拟币管理</b></button>
+      <button class="nav-item"><span>♟</span><b>专属客服</b></button>
+      <button class="nav-item"><span>▯</span><b>电话回拨</b></button>
+    </nav>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <button id="collapseBtn" class="icon-btn" aria-label="收起侧边栏">☰</button>
+      <div class="breadcrumb"><strong>首页</strong><span>/</span><span>会员管理</span><span>/</span><span>会员VIP管理</span></div>
+      <div class="toolbar"><a class="front-link" href="./index.html">原型入口</a><button class="download">下载列表 <b>34</b></button><button>⌕</button><button>⛶</button><button>TT</button><span class="flag">●</span><span class="avatar">管</span></div>
+    </header>
+    <div class="page-tag"><span>首页</span><strong>● 会员VIP管理 ×</strong></div>
+    <section class="content">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="等级配置">VIP等级配置</button>
+        <button class="tab" data-tab="权益配置">VIP权益配置</button>
+        <button class="tab" data-tab="返水配置">VIP返水配置</button>
+        <button class="tab" data-tab="等级变更记录">VIP等级变更记录</button>
+        <button class="tab" data-tab="页面配置">VIP页面配置</button>
+      </div>
+      <div id="configPanel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>VIP等级</th><th>VIP等级名称</th><th>升级条件存款≥</th><th>升级条件累计有效流水≥</th><th>保级流水≥</th><th>保级有效期（天）</th><th>单日提款限制（次）</th><th>单日提款限额（次）</th><th>周礼金领取存款条件</th><th>周礼金领取流水条件</th><th>月礼金领取存款条件</th><th>月礼金领取流水条件</th></tr></thead>
+            <tbody id="vipRows"></tbody>
+          </table>
+        </div>
+        <div class="actions"><button class="primary" id="saveBtn">保存</button><button id="restoreBtn">恢复上次设置</button></div>
+      </div>
+      <div id="rebatePanel" hidden>
+        <div class="rebate-heading"><h2>基础配置</h2><button class="primary rebate-save" id="rebateSaveBtn">保存</button></div>
+        <div class="base-setting"><label for="turnoverMultiple">提款流水倍数</label><div class="unit-input"><input id="turnoverMultiple" value="1" inputmode="decimal"><span>倍</span></div></div>
+        <div class="switch-setting"><strong>返水开关</strong><button class="switch" id="rebateSwitch" role="switch" aria-checked="false"><span></span><em>关</em></button></div>
+        <div class="rebate-table-wrap">
+          <table class="rebate-table">
+            <colgroup><col class="vip-col"><col span="6" class="rate-col"></colgroup>
+            <thead>
+              <tr><th rowspan="2">VIP等级</th><th colspan="6">返水比例</th></tr>
+              <tr><th>体育&nbsp;＋</th><th>真人&nbsp;＋</th><th>电子&nbsp;＋</th><th>电竞&nbsp;＋</th><th>棋牌&nbsp;＋</th><th>彩票&nbsp;＋</th></tr>
+            </thead>
+            <tbody id="rebateRows"></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="recordPanel" hidden>
+        <form class="record-filters" id="recordFilters">
+          <label>变更时间</label><div class="date-range"><input type="text" placeholder="开始时间"><span>–</span><input type="text" placeholder="结束时间"></div>
+          <label>变更类型</label><select id="changeType"><option value="">请选择</option><option>升级</option><option>降级</option></select>
+          <label>会员账号</label><input id="memberAccount" type="text" placeholder="请输入">
+          <label>操作人</label><input id="operator" type="text" placeholder="请输入">
+          <div class="filter-actions"><button type="submit" class="query-btn">⌕&nbsp; 查询</button><button type="reset" class="reset-btn">↻&nbsp; 重置</button><button type="button" class="export-btn" id="exportBtn">⇩&nbsp; 导出</button></div>
+        </form>
+        <div class="records-wrap">
+          <table class="records-table">
+            <thead><tr><th>变更时间</th><th>变更类型</th><th>变更前</th><th>变更后</th><th>会员账号</th><th>会员标签</th><th>上级代理</th><th>账号状态</th><th>调整方式</th><th>备注</th><th>操作人</th></tr></thead>
+            <tbody id="recordRows"></tbody>
+          </table>
+          <div class="empty-records" id="emptyRecords" hidden>暂无符合条件的记录</div>
+          <div class="pagination" id="pagination">
+            <span>共 15066 条</span>
+            <select aria-label="每页条数"><option>10条/页</option><option>20条/页</option><option>50条/页</option><option>100条/页</option></select>
+            <button class="page-arrow" data-page="prev" disabled>‹</button><button class="page-number active" data-page="1">1</button><button class="page-number" data-page="2">2</button><button class="page-number" data-page="3">3</button><button class="page-number" data-page="4">4</button><button class="page-number" data-page="5">5</button><button class="page-number" data-page="6">6</button><span class="page-dots">•••</span><button class="page-number" data-page="1507">1507</button><button class="page-arrow" data-page="next">›</button>
+            <label class="page-jump">前往 <input id="pageInput" value="1" inputmode="numeric"> 页</label>
+          </div>
+        </div>
+      </div>
+      <div id="pageConfigPanel" hidden>
+        <div class="page-config-head">
+          <div><h2>VIP活动内页图片配置</h2></div>
+          <div class="page-config-actions"><button type="button" class="prd-doc-btn" id="prdDocBtn">PRD文档</button><button class="primary" id="pageConfigSaveBtn">保存</button></div>
+        </div>
+        <div class="material-list">
+          <section class="material-card">
+            <div class="material-info"><h3><i class="required-star">*</i>活动内页顶部图：</h3></div>
+            <div class="upload-grid">
+              <div class="upload-field"><div class="upload-label">APP/H5</div><div class="upload-box" data-limit="2"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不大于2MB</p></div>
+              <div class="upload-field"><div class="upload-label">Web</div><div class="upload-box" data-limit="2"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不大于2MB</p></div>
+            </div>
+          </section>
+          <section class="material-card">
+            <div class="material-info"><h3><i class="required-star">*</i>活动背景图：</h3></div>
+            <div class="upload-grid">
+              <div class="upload-field"><div class="upload-label">APP/H5</div><div class="upload-box" data-limit="4"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过4MB</p></div>
+              <div class="upload-field"><div class="upload-label">Web</div><div class="upload-box" data-limit="4"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过4MB</p></div>
+            </div>
+          </section>
+          <section class="material-card">
+            <div class="material-info"><h3><i class="required-star">*</i>活动方案：</h3></div>
+            <div class="upload-grid">
+              <div class="upload-field"><div class="upload-label">APP/H5</div><div class="upload-box" data-limit="2"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不大于2MB</p></div>
+              <div class="upload-field"><div class="upload-label">Web</div><div class="upload-box" data-limit="2"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不大于2MB</p></div>
+            </div>
+          </section>
+          <section class="material-card vip-card-images">
+            <div class="material-info"><h3><i class="required-star">*</i>VIP等级权益卡片图：</h3></div>
+            <div class="upload-grid vip-card-upload-grid">
+              <div class="upload-field"><div class="upload-label">APP/H5-选中</div><div class="upload-box" data-limit="1"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过1MB</p></div>
+              <div class="upload-field"><div class="upload-label">APP/H5-未选中</div><div class="upload-box" data-limit="1"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过1MB</p></div>
+              <div class="upload-field"><div class="upload-label">Web-选中</div><div class="upload-box" data-limit="1"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过1MB</p></div>
+              <div class="upload-field"><div class="upload-label">Web-未选中</div><div class="upload-box" data-limit="1"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过1MB</p></div>
+            </div>
+          </section>
+          <section class="rules-section activity-rule-images">
+            <div class="rules-title"><strong><i class="required-star">*</i>活动规则：</strong></div>
+            <div class="upload-grid">
+              <div class="upload-field"><div class="upload-label">APP/H5</div><div class="upload-box" data-limit="2"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过2MB</p></div>
+              <div class="upload-field"><div class="upload-label">Web</div><div class="upload-box" data-limit="2"><input type="file" accept="image/jpeg,image/png"><div class="upload-empty"><b>＋</b></div></div><p class="upload-tip">建议尺寸：图片大小不超过2MB</p></div>
+            </div>
+          </section>
+          <section class="rules-section vip-terms-section">
+            <div class="rules-title"><strong class="vip-terms-label"><i class="required-star">*</i>VIP条款与规则：</strong></div>
+            <div class="rich-toolbar"><button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-cmd="strikeThrough">S̶</button><button type="button" data-cmd="formatBlock" data-value="blockquote">❝</button><button type="button" data-cmd="formatBlock" data-value="pre">&lt;/&gt;</button><button type="button" data-cmd="formatBlock" data-value="h1">H1</button><button type="button" data-cmd="formatBlock" data-value="h2">H2</button><button type="button" data-cmd="insertOrderedList">1. 列表</button><button type="button" data-cmd="insertUnorderedList">• 列表</button><button type="button" data-cmd="subscript">x₂</button><button type="button" data-cmd="superscript">x²</button><button type="button" data-cmd="outdent">⇤</button><button type="button" data-cmd="indent">⇥</button><button type="button" data-cmd="justifyLeft">左对齐</button><button type="button" data-cmd="justifyCenter">居中</button><button type="button" data-cmd="justifyRight">右对齐</button><button type="button" data-cmd="createLink" data-prompt="请输入链接">🔗</button><button type="button" data-cmd="insertHorizontalRule">▤</button><button type="button" data-cmd="removeFormat">Tx</button><span class="font-size-label">14px</span><span class="font-label">标准字体</span><label class="toolbar-color">文字色 <input type="color" data-cmd="foreColor" value="#333333"></label><label class="toolbar-color">底色 <input type="color" data-cmd="hiliteColor" value="#ffffff"></label></div>
+            <div id="vipTermsEditor" class="rich-editor" contenteditable="true" data-placeholder="请输入完整的VIP条款与规则文案"></div>
+          </section>
+        </div>
+      </div>
+      <div id="placeholderPanel" class="placeholder" hidden><div>当前展示：<strong id="placeholderTitle"></strong></div><p>该页签已保留，后续可继续补充对应原型。</p></div>
+    </section>
+  </main>
+  <div class="modal-mask" id="ruleModal" hidden>
+    <section class="rule-dialog" role="dialog" aria-modal="true" aria-labelledby="ruleDialogTitle">
+      <header><h2 id="ruleDialogTitle">新增</h2><button type="button" id="ruleModalClose" aria-label="关闭">×</button></header>
+      <div class="rule-form">
+        <div class="form-row"><strong>请选择上传类型：</strong><label><input type="radio" name="ruleType" value="text" checked> 文本</label><label><input type="radio" name="ruleType" value="image"> 图片上传</label></div>
+        <div id="ruleTextFields"><label class="required-field"><strong>文本：</strong><input id="ruleTextInput" type="text" placeholder="请输入"></label></div>
+        <div id="ruleImageFields" hidden>
+          <label class="rule-image-row"><strong>APP/H5图片：</strong><span class="rule-upload-box"><input id="ruleH5Image" type="file" accept="image/jpeg,image/png"><b>＋</b></span></label>
+          <label class="rule-image-row"><strong>Web图片：</strong><span class="rule-upload-box"><input id="ruleWebImage" type="file" accept="image/jpeg,image/png"><b>＋</b></span></label>
+        </div>
+        <p class="rule-help">提示：建议尺寸：图片大小不超过2MB；只支持一种方式，选择图片不支持文字，选择文字不支持图片</p>
+        <div class="dialog-actions"><button type="button" class="primary" id="ruleConfirmBtn">确认</button><button type="button" id="ruleCancelBtn">关闭</button></div>
+      </div>
+    </section>
+  </div>
+  <div class="modal-mask" id="prdModal" hidden>
+    <section class="rule-dialog prd-dialog" role="dialog" aria-modal="true" aria-labelledby="prdDialogTitle">
+      <header><h2 id="prdDialogTitle">VIP活动页面图片配置 PRD</h2><button type="button" id="prdModalClose" aria-label="关闭">×</button></header>
+      <div class="prd-content">
+        <p><strong>需求范围：</strong>中越站后台管理系统；配置入口：会员管理 → 会员VIP管理 → VIP页面配置。</p>
+        <h3>一、配置内容</h3>
+        <ol><li>活动内页顶部图：APP/H5、Web 各 1 张，必填，大小不超过 2MB。</li><li>活动背景图：APP/H5、Web 各 1 张，必填，大小不超过 4MB。</li><li>活动方案：APP/H5、Web 各 1 张，必填，大小不超过 2MB。</li><li>VIP等级权益卡片图：APP/H5-选中、APP/H5-未选中、Web-选中、Web-未选中，共 4 张，均必填，大小不超过 1MB。</li><li>活动规则：APP/H5、Web 各 1 张，必填，大小不超过 2MB。</li></ol>
+        <h3>二、上传规则</h3>
+        <ul><li>推荐格式：JPG、PNG；不支持的格式禁止上传。</li><li>超过大小限制时禁止上传并提示对应限制。</li><li>上传成功后支持预览、替换、删除后重新上传。</li><li>点击保存时校验全部必填项，任意一项缺失时不允许保存。</li><li>中站、越站配置相互独立；APP/H5 与 Web 配置相互独立。</li></ul>
+        <h3>三、前端展示</h3><p>中站、越站前端分别读取对应站点配置；APP/H5 和 Web 展示各自图片。VIP 卡片根据会员等级及选中状态展示对应图片，图片保持比例，不拉伸、不变形。</p>
+      </div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <style>.vip-terms-section{margin-top:24px}.rich-toolbar{display:flex;gap:8px;padding:10px 12px;background:#f5f7fa;border:1px solid #dfe5ec;border-bottom:0}.rich-toolbar button{border:1px solid #cfd8e3;background:#fff;padding:5px 12px;cursor:pointer}.rich-editor{min-height:260px;padding:14px;border:1px solid #dfe5ec;background:#fff;line-height:1.8;color:#333;outline:none}.rich-editor:empty:before{content:attr(data-placeholder);color:#aab3bf}.vip-terms-section .dialog-actions{justify-content:flex-start;margin-top:12px}.page-config-actions{display:flex;gap:12px;align-items:center}.prd-doc-btn{height:34px;padding:0 16px;border:1px dashed #ef2634;color:#ef2634;background:#fff;border-radius:2px;cursor:pointer}.prd-dialog{width:min(760px,calc(100vw - 48px));max-height:82vh}.prd-content{padding:20px 24px;overflow:auto;line-height:1.8;color:#46515d}.prd-content h3{margin:16px 0 6px;color:#27333e}.prd-content ol,.prd-content ul{margin:6px 0;padding-left:24px}</style><script src="./app.js"></script>
+<style>.vip-terms-label{white-space:nowrap}.material-card,.activity-rule-images{grid-template-columns:130px minmax(0,1fr);column-gap:18px}.material-card .material-info h3{white-space:nowrap}.vip-card-upload-grid{display:grid!important;grid-template-columns:repeat(2,220px);gap:24px 72px}.activity-rule-images{display:grid;padding:18px 4px 24px;align-items:start}.activity-rule-images .rules-title{margin:20px 0 0;display:flex;align-items:center;height:28px}.activity-rule-images .rules-title>strong{width:100%;justify-content:flex-end}.activity-rule-images .upload-grid{display:flex;gap:72px}.activity-rule-images .upload-field{width:220px}.main-nav>a.nav-item{border:0;color:inherit;background:none;width:100%;height:48px;display:grid;grid-template-columns:25px 1fr auto auto;align-items:center;text-align:left;padding:0 17px;gap:6px;cursor:pointer}.main-nav>a.nav-item:hover{background:#263d52}.tab[data-tab="页面配置"]{outline:3px dashed #ef2634;outline-offset:8px}</style><script src="./vip-terms.js"></script><script>const prdBtn=document.querySelector('#prdDocBtn'),prdModal=document.querySelector('#prdModal'),prdClose=document.querySelector('#prdModalClose');if(prdBtn&&prdModal){prdBtn.onclick=()=>prdModal.hidden=false;prdClose.onclick=()=>prdModal.hidden=true;prdModal.onclick=e=>{if(e.target===prdModal)prdModal.hidden=true};document.addEventListener('keydown',e=>{if(e.key==='Escape')prdModal.hidden=true})}</script></body>
+</html>
